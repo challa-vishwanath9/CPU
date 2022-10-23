@@ -1,0 +1,72 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001d77d3c2510 .scope module, "WB" "WB" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "WBMemToReg";
+    .port_info 2 /INPUT 32 "WBReadData";
+    .port_info 3 /INPUT 32 "WBAluRes";
+    .port_info 4 /INPUT 5 "WBiWriteReg";
+    .port_info 5 /INPUT 1 "WBiRegWrite";
+    .port_info 6 /OUTPUT 5 "WBWriteReg";
+    .port_info 7 /OUTPUT 1 "WBRegWrite";
+    .port_info 8 /OUTPUT 32 "WBwriteData";
+o000001d77d3f6fd8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d77d3c2740_0 .net "WBAluRes", 31 0, o000001d77d3f6fd8;  0 drivers
+o000001d77d3f7008 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d77d3c27e0_0 .net "WBMemToReg", 0 0, o000001d77d3f7008;  0 drivers
+o000001d77d3f7038 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v000001d77d3c2880_0 .net "WBReadData", 31 0, o000001d77d3f7038;  0 drivers
+v000001d77d3ab5f0_0 .var "WBRegWrite", 0 0;
+v000001d77d3ab690_0 .var "WBWriteReg", 4 0;
+o000001d77d3f70c8 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d77d3ab730_0 .net "WBiRegWrite", 0 0, o000001d77d3f70c8;  0 drivers
+o000001d77d3f70f8 .functor BUFZ 5, C4<zzzzz>; HiZ drive
+v000001d77d3ab7d0_0 .net "WBiWriteReg", 4 0, o000001d77d3f70f8;  0 drivers
+v000001d77d3ab870_0 .var "WBwriteData", 31 0;
+o000001d77d3f7158 .functor BUFZ 1, C4<z>; HiZ drive
+v000001d77d3ab910_0 .net "clk", 0 0, o000001d77d3f7158;  0 drivers
+E_000001d77d3f5d70 .event posedge, v000001d77d3ab910_0;
+    .scope S_000001d77d3c2510;
+T_0 ;
+    %pushi/vec4 0, 0, 5;
+    %store/vec4 v000001d77d3ab690_0, 0, 5;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d77d3ab870_0, 0, 32;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d77d3ab5f0_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000001d77d3c2510;
+T_1 ;
+    %wait E_000001d77d3f5d70;
+    %load/vec4 v000001d77d3ab7d0_0;
+    %assign/vec4 v000001d77d3ab690_0, 0;
+    %load/vec4 v000001d77d3ab730_0;
+    %assign/vec4 v000001d77d3ab5f0_0, 0;
+    %load/vec4 v000001d77d3c27e0_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_1.0, 8;
+    %load/vec4 v000001d77d3c2880_0;
+    %jmp/1 T_1.1, 8;
+T_1.0 ; End of true expr.
+    %load/vec4 v000001d77d3c2740_0;
+    %jmp/0 T_1.1, 8;
+ ; End of false expr.
+    %blend;
+T_1.1;
+    %assign/vec4 v000001d77d3ab870_0, 0;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "WB.v";

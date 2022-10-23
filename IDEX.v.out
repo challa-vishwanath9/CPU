@@ -1,0 +1,101 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000293a56a2620 .scope module, "IDEX" "IDEX" 2 1;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 32 "instructionIDstall";
+    .port_info 2 /INPUT 32 "rd1";
+    .port_info 3 /INPUT 32 "rd2";
+    .port_info 4 /INPUT 32 "signEx";
+    .port_info 5 /INPUT 1 "MemRead";
+    .port_info 6 /INPUT 1 "MemToReg";
+    .port_info 7 /INPUT 1 "MemWrite";
+    .port_info 8 /INPUT 1 "RegWrite";
+    .port_info 9 /INPUT 5 "writeReg";
+    .port_info 10 /INPUT 4 "AluCtrl";
+    .port_info 11 /OUTPUT 32 "instructionEX";
+    .port_info 12 /OUTPUT 32 "EXread1";
+    .port_info 13 /OUTPUT 32 "EXread2";
+    .port_info 14 /OUTPUT 32 "EXsignEx";
+    .port_info 15 /OUTPUT 1 "EXMemRead";
+    .port_info 16 /OUTPUT 1 "EXMemToReg";
+    .port_info 17 /OUTPUT 1 "EXMemWrite";
+    .port_info 18 /OUTPUT 1 "EXRegWrite";
+    .port_info 19 /OUTPUT 5 "EXwriteReg";
+    .port_info 20 /OUTPUT 4 "EXAluCtrl";
+o00000293a56d9fb8 .functor BUFZ 4, C4<zzzz>; HiZ drive
+v00000293a56a2910_0 .net "AluCtrl", 3 0, o00000293a56d9fb8;  0 drivers
+v00000293a568bd00_0 .var "EXAluCtrl", 3 0;
+v00000293a571c820_0 .var "EXMemRead", 0 0;
+v00000293a571c8c0_0 .var "EXMemToReg", 0 0;
+v00000293a571c960_0 .var "EXMemWrite", 0 0;
+v00000293a571ca00_0 .var "EXRegWrite", 0 0;
+v00000293a571caa0_0 .var "EXread1", 31 0;
+v00000293a571cb40_0 .var "EXread2", 31 0;
+v00000293a571cbe0_0 .var "EXsignEx", 31 0;
+v00000293a571cd10_0 .var "EXwriteReg", 4 0;
+o00000293a56da198 .functor BUFZ 1, C4<z>; HiZ drive
+v00000293a571cdb0_0 .net "MemRead", 0 0, o00000293a56da198;  0 drivers
+o00000293a56da1c8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000293a571ce50_0 .net "MemToReg", 0 0, o00000293a56da1c8;  0 drivers
+o00000293a56da1f8 .functor BUFZ 1, C4<z>; HiZ drive
+v00000293a571cef0_0 .net "MemWrite", 0 0, o00000293a56da1f8;  0 drivers
+o00000293a56da228 .functor BUFZ 1, C4<z>; HiZ drive
+v00000293a56d4190_0 .net "RegWrite", 0 0, o00000293a56da228;  0 drivers
+o00000293a56da258 .functor BUFZ 1, C4<z>; HiZ drive
+v00000293a56d4230_0 .net "clk", 0 0, o00000293a56da258;  0 drivers
+v00000293a56d42d0_0 .var "instructionEX", 31 0;
+o00000293a56da2b8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000293a571d9e0_0 .net "instructionIDstall", 31 0, o00000293a56da2b8;  0 drivers
+o00000293a56da2e8 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000293a571dc60_0 .net "rd1", 31 0, o00000293a56da2e8;  0 drivers
+o00000293a56da318 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000293a571d8a0_0 .net "rd2", 31 0, o00000293a56da318;  0 drivers
+o00000293a56da348 .functor BUFZ 32, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; HiZ drive
+v00000293a571da80_0 .net "signEx", 31 0, o00000293a56da348;  0 drivers
+o00000293a56da378 .functor BUFZ 5, C4<zzzzz>; HiZ drive
+v00000293a571d6c0_0 .net "writeReg", 4 0, o00000293a56da378;  0 drivers
+E_00000293a56d9210 .event posedge, v00000293a56d4230_0;
+    .scope S_00000293a56a2620;
+T_0 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v00000293a56d42d0_0, 0, 32;
+    %end;
+    .thread T_0;
+    .scope S_00000293a56a2620;
+T_1 ;
+    %wait E_00000293a56d9210;
+    %load/vec4 v00000293a571cdb0_0;
+    %assign/vec4 v00000293a571c820_0, 0;
+    %load/vec4 v00000293a571ce50_0;
+    %assign/vec4 v00000293a571c8c0_0, 0;
+    %load/vec4 v00000293a571cef0_0;
+    %assign/vec4 v00000293a571c960_0, 0;
+    %load/vec4 v00000293a56d4190_0;
+    %assign/vec4 v00000293a571ca00_0, 0;
+    %load/vec4 v00000293a571d6c0_0;
+    %assign/vec4 v00000293a571cd10_0, 0;
+    %load/vec4 v00000293a56a2910_0;
+    %assign/vec4 v00000293a568bd00_0, 0;
+    %load/vec4 v00000293a571d9e0_0;
+    %assign/vec4 v00000293a56d42d0_0, 0;
+    %load/vec4 v00000293a571dc60_0;
+    %assign/vec4 v00000293a571caa0_0, 0;
+    %load/vec4 v00000293a571d8a0_0;
+    %assign/vec4 v00000293a571cb40_0, 0;
+    %load/vec4 v00000293a571da80_0;
+    %assign/vec4 v00000293a571cbe0_0, 0;
+    %jmp T_1;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "IDEX.v";
